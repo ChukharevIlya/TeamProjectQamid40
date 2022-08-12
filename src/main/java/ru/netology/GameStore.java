@@ -29,6 +29,7 @@ public class GameStore {
      * Проверяет наличие игры в каталоге и возврашает true
      * если игра есть и false иначе
      */
+    // не хватает "=" в цикле
     public boolean containsGame(Game game) {
         for (int i = 1; i < games.size(); i++) {
             if (games.get(i - 1).equals(game)) {
