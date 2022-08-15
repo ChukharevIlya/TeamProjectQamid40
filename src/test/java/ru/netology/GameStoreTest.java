@@ -92,7 +92,7 @@ public class GameStoreTest {
 
         assertEquals(expected, actual);
     }
-    // getMostPlayer показывает первого среди равных, если все хотябы 2 играли одинаковое время
+    // getMostPlayer показывает первого среди равных, если хотя бы 2 играли одинаковое время
     @Test
     public void shouldFindFirstPlayerWhoPlayedTheMostIfThereIsAPlayerWithEqualsTime() {
 
@@ -122,7 +122,7 @@ public class GameStoreTest {
 
     // getSumPlayedTime показывает общее количество времени всех игроков, если играли несколько игроков по два раза
     @Test
-    public void shouldSumTimeOfAllPlayersIfSeveralPlayersPlayedTwoTime() {
+    public void shouldSumTimeOfAllPlayersIfSeveralPlayersPlayedTwice() {
 
         store.addPlayTime("player1", 2);
         store.addPlayTime("player1", 8);
@@ -151,7 +151,7 @@ public class GameStoreTest {
 
     // getSumPlayedTime показывает общее количество времени всех игроков, если играл только один, но 2 раза
     @Test
-    public void shouldSumTimeOfAllPlayersIfOnePlayer() {
+    public void shouldSumTimeOfAllPlayersIfOnePlayerPlayedTwice() {
 
         store.addPlayTime("player1", 2);
         store.addPlayTime("player1", 10);
@@ -171,61 +171,38 @@ public class GameStoreTest {
 
         assertEquals(expected, actual);
     }
-
-    /*
-    // addPlayTime показывает сколько времени сыграл один игрок за один раз
-    @Test
-    public void shouldShowPlayedTimeIfPlayedOnce() {
-
-        store.addPlayTime("player1", 2);
-
-        int expected = 2;
-        int actual = store.playedTime.get("player1");
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    // addPlayTime суммирует сколько времени сыграл игрок за 2 раза
-    @Test
-    public void shouldShowPlayedTimeIfPlayedTwice() {
-
-        store.addPlayTime("player1", 2);
-        store.addPlayTime("player1", 8);
-
-        int expected = 10;
-        int actual = store.playedTime.get("player1");
-
-        Assertions.assertEquals(expected, actual);
-    }
-    // addPlayTime суммирует сколько времени сыграно, если игрок не  вообще не играл.
-    @Test
-    public void shouldShowPlayedTimeIfPlayedTwice() {
-
-        int expected = 0;
-        int actual = store.playedTime.get("player1");
-
-        Assertions.assertEquals(expected, actual);
-    }
-     */
-
-    // ВОТ ТАКИМ ОБРАЗОМ ВСЕ ПОЛУЧАЕТСЯ ЕСЛИ БЫ В КЛАССЕ GameStore мапа playedTime была бы protected
-//        int expected = 2;
-//        int actual = store.playedTime.get("player1");
-//        Assertions.assertEquals(expected, actual);
-
-
+//
+//    // addPlayTime показывает сколько времени сыграл один игрок за один раз
 //    @Test
 //    public void shouldShowPlayedTimeIfPlayedOnce() {
-//        GameStore store = new GameStore();
 //
 //        store.addPlayTime("player1", 2);
 //
-//        Map<GameStore, Integer> act = new HashMap<>(store.playedTime);
-//
 //        int expected = 2;
-//        int actual = act.get("player1");
+//        int actual = store.getSumPlayedTime();
 //
 //        Assertions.assertEquals(expected, actual);
 //    }
-
+//
+//    // addPlayTime регистрирует время игрока, сыгравшего 2 раза
+//    @Test
+//    public void shouldShowPlayedTimeIfPlayedTwice() {
+//
+//        store.addPlayTime("player1", 2);
+//        store.addPlayTime("player1", 8);
+//
+//        int expected = 10;
+//        int actual = store.getSumPlayedTime();
+//
+//        Assertions.assertEquals(expected, actual);
+//    }
+//    // addPlayTime не регpистрирует никакого времени, если игрок не играл вообще.
+//    @Test
+//    public void shouldShowPlayedTimeIfNobodyPlayed() {
+//
+//        int expected = 0;
+//        int actual = store.getSumPlayedTime();
+//
+//        Assertions.assertEquals(expected, actual);
+//    }
 }
