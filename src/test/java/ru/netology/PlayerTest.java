@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class PlayerTest {
 
+    //
     @Test
     public void shouldSumGenreIfOneGame() {
         GameStore store = new GameStore();
@@ -19,5 +20,20 @@ public class PlayerTest {
         assertEquals(expected, actual);
     }
 
-    // другие ваши тесты
+    @Test
+    public void shouldMostPlayerByGenre() {
+        GameStore store = new GameStore();
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+
+        Player player = new Player("Name1");
+        player.installGame(game);
+        player.play(game, 3);
+
+        Game expected = game;
+        Game actual = player.mostPlayerByGenre("Аркады");
+        assertEquals(expected, actual);
+
+    }
+
+
 }
